@@ -1,9 +1,15 @@
-# .env file example
+## .env file example
 
 MYSQL_HOST=127.0.0.1
+
 MYSQL_PORT=3306
+
 MYSQL_ROOT_PASSWORD=123456
+
 MYSQL_DATABASE=ttrp-db
+
 MYSQL_USER=admin
+
 MYSQL_PASSWORD=123456
+
 PORT=9005
