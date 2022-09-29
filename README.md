@@ -13,3 +13,5 @@ MYSQL_USER=admin
 MYSQL_PASSWORD=123456
 
 PORT=9005
+
+DND_API=https://www.dnd5eapi.co/api
