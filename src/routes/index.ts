@@ -8,6 +8,6 @@ const router = Router()
 
 router.use("/auth", authRoute)
 router.use("/dnd-api", dndApiRoute)
-router.use("/private/user", userRoute)
+router.use("/user", userRoute)
 
 export default router

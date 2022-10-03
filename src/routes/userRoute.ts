@@ -1,10 +1,13 @@
 import { Router } from "express"
 
+import { getUserById } from "../domain/actions/users"
+
 const router = Router()
 
-// should return one user
-router.get("/:id", (req, res) => {
-  res.sendStatus(503)
+router.get("/:id", async (req, res) => {
+  const id = parseInt(req.params.id)
+  const user = await getUserById(id)
+  res.json(user)
 })
 
 // should return a list of users matching the query
