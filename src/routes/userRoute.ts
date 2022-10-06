@@ -1,28 +1,28 @@
 import { Router } from "express"
 
-import { getUserById } from "../domain/actions/users"
+import { getUser, updateUser, deleteUser } from "../domain/actions/users"
+import { createResponse } from "./helpers"
 
 const router = Router()
 
 router.get("/:id", async (req, res) => {
   const id = parseInt(req.params.id)
-  const user = await getUserById(id)
-  res.json(user)
-})
-
-// should return a list of users matching the query
-router.get("/search/:query", (req, res) => {
-  res.sendStatus(503)
+  const user = await getUser(id)
+  res.json(createResponse(user))
 })
 
 // should update an existing user
-router.put("/:id", (req, res) => {
-  res.sendStatus(503)
+router.put("/:id", async (req, res) => {
+  const id = parseInt(req.params.id)
+  const user = await updateUser(id, req.body)
+  res.json(createResponse(user))
 })
 
 // should delete an existing user
-router.delete("/:id", (req, res) => {
-  res.sendStatus(503)
+router.delete("/:id", async (req, res) => {
+  const id = parseInt(req.params.id)
+  const result = await deleteUser(id)
+  res.json(createResponse(result))
 })
 
 export default router
