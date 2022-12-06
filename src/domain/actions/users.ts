@@ -1,4 +1,4 @@
-import db, { dbExecute, Table } from "../db"
+import db, { Table } from "../db"
 
 const { USERS } = Table
 

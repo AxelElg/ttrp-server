@@ -5,7 +5,7 @@ import { getCharacter } from "../domain/actions/characters"
 
 const router = Router()
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const id = parseInt(req.params.id)
   const character = await getCharacter(id)
 
