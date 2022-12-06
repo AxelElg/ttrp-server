@@ -3,7 +3,7 @@ import { Table } from "../domain/db"
 
 export const up = async (knex: Knex): Promise<any> => {
   return knex.schema.createTable(
-    Table.CHARACTER_ABILITY_SCORE,
+    Table.CHARACTER_ABILITY_SCORES,
     (table: Knex.TableBuilder) => {
       table.increments()
       table.integer("str").unsigned().notNullable()
@@ -17,4 +17,4 @@ export const up = async (knex: Knex): Promise<any> => {
 }
 
 export const down = async (knex: Knex): Promise<any> =>
-  knex.schema.dropTableIfExists(Table.CHARACTER_ABILITY_SCORE)
+  knex.schema.dropTableIfExists(Table.CHARACTER_ABILITY_SCORES)
