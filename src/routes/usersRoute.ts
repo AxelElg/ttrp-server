@@ -6,6 +6,7 @@ import { createResponse } from "./helpers"
 const router = Router()
 
 router.get("/:id", async (req, res) => {
+  console.log("test u")
   const id = parseInt(req.params.id)
   const user = await getUser(id)
   res.json(createResponse(user))

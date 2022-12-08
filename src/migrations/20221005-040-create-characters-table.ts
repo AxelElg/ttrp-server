@@ -7,7 +7,7 @@ export const up = async (knex: Knex): Promise<any> => {
     table.string("name", 100).notNullable()
     table.string("race", 30).notNullable()
     table.string("gender", 2).notNullable()
-    table.string("class", 30).notNullable()
+    table.string("characterClass", 30).notNullable()
     table.string("alignment", 30).notNullable()
     table.integer("abilityScoreId").notNullable()
     table.integer("portraitId").notNullable()
