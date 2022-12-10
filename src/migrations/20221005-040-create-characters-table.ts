@@ -9,8 +9,6 @@ export const up = async (knex: Knex): Promise<any> => {
     table.string("gender", 2).notNullable()
     table.string("characterClass", 30).notNullable()
     table.string("alignment", 30).notNullable()
-    table.integer("abilityScoreId").notNullable()
-    table.integer("portraitId").notNullable()
     table.timestamp("createdAt").defaultTo(knex.fn.now())
   })
 }

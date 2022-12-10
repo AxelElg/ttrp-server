@@ -6,43 +6,18 @@ const createCharacter = (
   race: string,
   gender: "xy" | "xx",
   characterClass: string,
-  alignment: string,
-  abilityScoreId: number,
-  portraitId: number
+  alignment: string
 ) => ({
   id: getId(Table.CHARACTERS),
   name,
   race,
   gender,
   characterClass,
-  alignment,
-  abilityScoreId,
-  portraitId
+  alignment
 })
 
 export const characters = [
-  createCharacter("Aragon", "human", "xy", "ranger", "Lawful Good", 1, 1),
-  createCharacter("Legolas", "elf", "xy", "Archer", "Lawful Good", 2, 2),
-  createCharacter("Gimly", "dwarf", "xy", "fighter", "Chaotic Good", 3, 3)
+  createCharacter("Aragon", "human", "xy", "ranger", "Lawful Good"),
+  createCharacter("Legolas", "elf", "xy", "Archer", "Lawful Good"),
+  createCharacter("Gimly", "dwarf", "xy", "fighter", "Chaotic Good")
 ]
-// {
-//   "name": "name",
-//   "race": "elf",
-//   "gender": "yx",
-//   "class": {
-//     "1": {
-//       "name": "thief",
-//       "lvl": "1",
-//       "exp": "0"
-//     }
-//   },
-//   "abilities": {
-//     "str": "15",
-//     "dex": "15",
-//     "con": "15",
-//     "int": "15",
-//     "wis": "15",
-//     "car": "15"
-//   },
-//   "portrait": ""
-// }

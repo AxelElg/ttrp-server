@@ -1,4 +1,6 @@
+import { characters } from "../../seeds/data/characters"
 import db, { Table } from "../db"
+import { Character, NewCharacter } from "../types"
 
 const { CHARACTERS, CHARACTER_ABILITY_SCORES, CHARACTER_PORTRAITS, PORTRAITS } = Table
 
@@ -10,7 +12,7 @@ const [c, cAS, cP, p] = [
 ]
 
 export const getCharacter = async (id: number) => {
-  const characterData: any = await db
+  const characterData = await db
     .select(
       `${c}.id`,
       "name",
@@ -24,13 +26,13 @@ export const getCharacter = async (id: number) => {
       "con",
       "int",
       "wis",
-      "con"
+      "cha"
     )
     .from(c)
     .where(`${c}.id`, id)
     .first()
-    .innerJoin(cAS, `${c}.abilityScoreId`, `${cAS}.id`)
-    .innerJoin(cP, `${c}.portraitId`, `${cP}.cid`)
+    .innerJoin(cAS, `${c}.id`, `${cAS}.cId`)
+    .innerJoin(cP, `${c}.id`, `${cP}.cId`)
     .innerJoin(p, `${cP}.pId`, `${p}.id`)
 
   const { str, dex, con, int, wis, cha, ...data } = characterData
@@ -48,12 +50,42 @@ export const getCharacter = async (id: number) => {
   }
 }
 
-export const updateCharacter = (id: number, fields: any) => {
-  console.log(fields)
+export const createCharacter = async (character: NewCharacter) => {
+  const { abilityScores, pId, ...fields } = character
 
-  return db.where({ id }).update(fields).into(CHARACTERS)
+  return await db
+    .insert(fields)
+    .into(CHARACTERS)
+    .select("id")
+    .then(async (cId) => {
+      await db
+        .insert({
+          cId,
+          ...abilityScores
+        })
+        .into(CHARACTER_ABILITY_SCORES)
+
+      await db
+        .insert({
+          cId,
+          pId
+        })
+        .into(CHARACTER_PORTRAITS)
+
+      return getCharacter(cId[0])
+    })
 }
 
 export const deleteCharacter = (id: number) => {
   return db.table(CHARACTERS).where({ id }).del()
+}
+
+export const updateCharacterPortrait = async (cId: number, pId: number) => {
+  return await db
+    .where(cId)
+    .update(pId)
+    .into(CHARACTER_PORTRAITS)
+    .then(() => {
+      return getCharacter(cId)
+    })
 }

@@ -1,7 +1,9 @@
 import { Table } from "../../domain/db"
+import { characters } from "./characters"
 import { getId } from "./helpers"
 
 const createCharacterAbilityScores = (
+  cId: number,
   str: number,
   dex: number,
   con: number,
@@ -10,6 +12,7 @@ const createCharacterAbilityScores = (
   cha: number
 ) => ({
   id: getId(Table.CHARACTER_ABILITY_SCORES),
+  cId,
   str,
   dex,
   con,
@@ -18,8 +21,6 @@ const createCharacterAbilityScores = (
   cha
 })
 
-export const characterAbilityScores = [
-  createCharacterAbilityScores(18, 18, 18, 18, 18, 18),
-  createCharacterAbilityScores(17, 17, 17, 17, 17, 17),
-  createCharacterAbilityScores(16, 16, 16, 16, 16, 16)
-]
+export const characterAbilityScores = characters.map((character) =>
+  createCharacterAbilityScores(character.id, 18, 18, 18, 18, 18, 18)
+)
