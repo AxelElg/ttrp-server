@@ -21,7 +21,11 @@ const db = knex({
 
 export const Table = {
   USERS: "users",
-  PASSWORDS: "passwords"
+  PASSWORDS: "passwords",
+  PORTRAITS: "portraits",
+  CHARACTERS: "characters",
+  CHARACTER_PORTRAITS: "character_portraits",
+  CHARACTER_ABILITY_SCORES: "character_ability_scores"
 }
 
 type dbExecuteParamType = {
