@@ -20,7 +20,7 @@ export const getCharacter = async (id: number) => {
       "gender",
       "characterClass",
       "alignment",
-      "slug",
+      "img_slug",
       "str",
       "dex",
       "con",

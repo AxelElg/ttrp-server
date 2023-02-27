@@ -16,12 +16,17 @@ export type NewCharacter = {
   abilityScores: AbilityScores
 }
 
+export type Portrait = {
+  id: number
+  img_slug: string
+}
+
 export type Character = {
   id: number
   name: string
   race: string
   gender: string
   characterClass: string
-  slug: string
+  img_slug: string
   abilityScores: AbilityScores
 }
