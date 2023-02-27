@@ -26,6 +26,7 @@ router.get("/", async (_req, res) => {
 
 router.post("/create", async (req, res) => {
   const { img_slug } = req.body
+
   const result: Portrait = await createPortrait(img_slug)
 
   res.send(createResponse(result))
