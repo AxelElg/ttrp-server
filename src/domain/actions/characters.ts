@@ -1,6 +1,5 @@
-import { characters } from "../../seeds/data/characters"
 import db, { Table } from "../db"
-import { Character, NewCharacter } from "../types"
+import { NewCharacter } from "../types"
 
 const { CHARACTERS, CHARACTER_ABILITY_SCORES, CHARACTER_PORTRAITS, PORTRAITS } = Table
 
@@ -76,8 +75,8 @@ export const createCharacter = async (character: NewCharacter) => {
     })
 }
 
-export const deleteCharacter = (id: number) => {
-  return db.table(CHARACTERS).where({ id }).del()
+export const deleteCharacter = async (id: number) => {
+  return await db.table(CHARACTERS).where({ id }).del()
 }
 
 export const updateCharacterPortrait = async (cId: number, pId: number) => {
