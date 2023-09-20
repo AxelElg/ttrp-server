@@ -16,6 +16,12 @@ export type NewCharacter = {
   abilityScores: AbilityScores
 }
 
+export type NewUser = {
+  name: string
+  email: string
+  password: string
+}
+
 export type Portrait = {
   id: number
   img_slug: string

@@ -9,7 +9,7 @@ import portraitsRoute from "./portraitsRoute"
 const router = Router()
 
 router.use("/auth", authRoute)
-router.use("/dnd-api", dndApiRoute)
+router.use("/api", dndApiRoute)
 router.use("/users", usersRoute)
 router.use("/characters", characterRoute)
 router.use("/portraits", portraitsRoute)
